@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Menu;
 
 import Panel.Panel;
@@ -8,7 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import Data.MedRec;
-
+/**
+ *
+ * @author Gustav
+ */
 public class Menu extends JFrame implements ActionListener{
     
     JLabel ltitle = new JLabel("Main Menu");
@@ -60,7 +68,7 @@ public class Menu extends JFrame implements ActionListener{
            EditMedRec ed = new EditMedRec();
            ed.dispose();
            MedRec md = new MedRec();
-           Panel ct = new Panel(lh, md,ik,ed);
+           //Panel ct = new Panel(lh, md,ik,ed);
         }
     }
 }  

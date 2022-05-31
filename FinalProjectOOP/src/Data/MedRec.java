@@ -1,19 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Data;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.table.DefaultTableModel;
+    import java.awt.event.ActionEvent;
+    import java.awt.event.ActionListener;
+    import javax.swing.ScrollPaneConstants;
+    import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import Connection.Connector;
 import java.awt.HeadlessException;
-
+/**
+ *
+ * @author Gustav
+ */
 public class MedRec {
     Connector Con = new Connector();
-    
+    //Statement statement = new Statement();
     public String[][] readContact(){
         try{
             int figures = 0;
@@ -39,10 +47,10 @@ public class MedRec {
     }
     
      public int getAmountData(){
-        
+   
         try{
             int amntData = 0;
-            Statement = Con.createStatement();
+            //Statement = Con.createStatement();
             String query = "Select * from Patient";
             ResultSet resultSet = Con.statement.executeQuery(query);
             while (resultSet.next()){ 
@@ -57,7 +65,7 @@ public class MedRec {
         }
     }
      
-    public void insert(String name, String age, String birth){
+    public void insert(String ID, String name, String age, String birth){
         int no=0;
         try {
            String query = "Select * from Patient"; 
@@ -66,7 +74,7 @@ public class MedRec {
            while (resultSet.next()){ 
                 no++;
             }
-                query = "INSERT INTO MedRec VALUES('"+no+"','"+name+"','"+age+"','"+birth+"')";
+                query = "INSERT INTO MedRec VALUES('"+no+"','"+ID+"','"+name+"','"+age+"','"+birth+"')";
                 
                 Con.statement = (Statement) Con.Con.createStatement();
                 Con.statement.executeUpdate(query); 
@@ -77,10 +85,10 @@ public class MedRec {
             JOptionPane.showMessageDialog(null, sql.getMessage());
         }
     }
-       public void update(String name,String check, String age, String birth){
+       public void update(String ID, String name, String age, String birth){
         int no=0;
          try {
-           String query = "Select * from Patient WHERE id=" + check; 
+           String query = "Select * from Patient WHERE id=" + ID; 
            ResultSet resultSet = Con.statement.executeQuery(query);
            
            while (resultSet.next()){ 
@@ -88,7 +96,7 @@ public class MedRec {
             }
            
              if (no==1) {
-                query = "UPDATE Patient SET id='" + check + "', name='" + name + "', age='" + age + "', birth='" + birth + "' WHERE id=" + check;
+                query = "UPDATE Patient SET id='" + ID + "', name='" + name + "', age='" + age + "', birth='" + birth + "' WHERE id=" + ID;
                 Con.statement = (Statement) Con.Con.createStatement();
                 Con.statement.executeUpdate(query); //execute query
                 System.out.println("Update Success");
@@ -103,9 +111,9 @@ public class MedRec {
             JOptionPane.showMessageDialog(null, sql.getMessage());
         }
     }
-    public void delete (String check) {
+    public void delete (String ID) {
         try{
-            String query = "DELETE FROM Patient WHERE id = '"+check+"'";
+            String query = "DELETE FROM Patient WHERE id = '"+ID+"'";
             Con.statement = Con.Con.createStatement();
             Con.statement.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Delete Success");
