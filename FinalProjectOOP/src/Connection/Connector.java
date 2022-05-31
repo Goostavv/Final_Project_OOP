@@ -41,7 +41,7 @@ public class Connector {
     }
    public void insertData (String ID, String name, String age, String birth){
 try {
-String query = "INSERT INTO `patient` (`id``name`,`age`,`birth`)" + "VALUES('" + ID + "','" + name + "','" + age + "','" + birth + "')";
+String query = "INSERT INTO `patient` (`id`,`name`,`age`,`birth`)" + "VALUES('" + ID + "','" + name + "','" + age + "','" + birth + "')";
         statement = Con.createStatement();
         statement.executeUpdate(query);
         System.out.println("Input Success");
