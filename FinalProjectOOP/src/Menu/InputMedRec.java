@@ -97,7 +97,15 @@ public class InputMedRec extends JFrame {
         }
     });
     
-    
+    bback.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+        dispose();
+        Menu menu = new Menu();       
+         
+        }
+    });
         
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);  

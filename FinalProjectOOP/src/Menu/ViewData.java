@@ -61,6 +61,16 @@ public class ViewData extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         
+        bback.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+       
+        Menu menu = new Menu();   
+        dispose();
+         
+        }
+    });
         showData();
         
         table.addMouseListener(new MouseAdapter() {
@@ -90,13 +100,15 @@ public class ViewData extends JFrame {
                         "Option...", 
                         JOptionPane.YES_NO_OPTION);
                     if (input == 0){
-                        // go to update page/ui
-                        //EditMedrec update = new EditMedrec(ID);
+                         //go to update page/ui
+                        dispose();
+                        EditMedRec update = new EditMedRec(ID);
                         //Update update = new Update(ID);
                     }
                 }
             }
         });
+        
     }
     private void showData(){
         patient = connector.readData();

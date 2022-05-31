@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-import Data.MedRec;
+import Menu.*;
 /**
  *
  * @author Gustav
@@ -51,23 +51,24 @@ public class Menu extends JFrame implements ActionListener{
     @Override
     public void actionPerformed (ActionEvent g){
         if(g.getSource() == badd){
-           ViewData lh = new ViewData();
-           lh.dispose();
+           //ViewData lh = new ViewData();
+           //lh.dispose();
            dispose();
            InputMedRec ik = new InputMedRec();
-           EditMedRec ed = new EditMedRec();
-           ed.dispose();
-           MedRec md = new MedRec();
-           Panel ct = new Panel(lh, md,ik,ed);
+           //EditMedRec ed = new EditMedRec(ID);
+           //ed.dispose();
+           //ViewData md = new ViewData();
+           //Panel ct = new Panel(lh, md,ik,ed);
            
         }
         if(g.getSource() == bview){
+           dispose();
            ViewData lh = new ViewData();
-           InputMedRec ik = new InputMedRec();
-           ik.dispose();
-           EditMedRec ed = new EditMedRec();
-           ed.dispose();
-           MedRec md = new MedRec();
+           //InputMedRec ik = new InputMedRec();
+           //ik.dispose();
+           //EditMedRec ed = new EditMedRec();
+           //ed.dispose();
+           //ViewData md = new ViewData();
            //Panel ct = new Panel(lh, md,ik,ed);
         }
     }

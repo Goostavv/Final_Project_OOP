@@ -11,12 +11,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import Menu.InputMedRec;
+import Menu.*;
+import javax.swing.JFrame;
 /**
  *
  * @author Gustav
  */
-public class Connector {
+public class Connector extends JFrame {
     String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     String DB_URL = "jdbc:mysql://localhost:3306/patient";
     String USER = "root";
@@ -39,6 +40,9 @@ public class Connector {
             System.out.println("Connection Failed");
         }
     }
+    
+    
+    
    public void insertData (String ID, String name, String age, String birth){
 try {
 String query = "INSERT INTO `patient` (`id`,`name`,`age`,`birth`)" + "VALUES('" + ID + "','" + name + "','" + age + "','" + birth + "')";
@@ -53,9 +57,7 @@ JOptionPane.showMessageDialog(null, ex.getMessage());}
 
 public void updateData(String ID, String name, String age, String birth ){
         try {
-            String query = "UPDATE `patient` SET `name` = '" 
-                    + name + "', name = '" + age + 
-                    "', birth = '" + birth + "' WHERE id = '" + ID + "'";
+            String query = "UPDATE `patient` SET `name` = '" + name + "', name = '" + age + "', birth = '" + birth + "' WHERE id = '" + ID + "'";
             statement = Con.createStatement();
             statement.executeUpdate(query);
 
@@ -66,7 +68,7 @@ public void updateData(String ID, String name, String age, String birth ){
         }
     }
 
-public void login(String username, String password){
+public void login(String username, String password)  {
 try {       ResultSet rs;
             String query = "SELECT * FROM login WHERE username='"+username+"' AND password='"+password+"'";
             statement = Con.createStatement();
@@ -74,7 +76,8 @@ try {       ResultSet rs;
             if(rs.next()){
                 if(username.equals(rs.getString("username")) && password.equals(rs.getString("password"))){
                     JOptionPane.showMessageDialog(null, "login sucess");
-                    InputMedRec input = new InputMedRec();
+                    dispose();
+                    Menu menu = new Menu();
                 }
             }else{
                     JOptionPane.showMessageDialog(null, "wrong username or password ");

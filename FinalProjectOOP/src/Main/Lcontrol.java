@@ -8,12 +8,14 @@ package Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Connection.Connector;
+import javax.swing.JFrame;
+import Menu.*;
 
 /**
  *
  * @author Gustav
  */
-public class Lcontrol {
+public class Lcontrol extends JFrame {
     Lview lv;
     Connector connector = new Connector();
 
@@ -28,6 +30,8 @@ public class Lcontrol {
                     password = lv.getPassword();
                     connector.login(username, password);
                     Connector connector = new Connector();
+                    
+                    
                 }
         });
                     

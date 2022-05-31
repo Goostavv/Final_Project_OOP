@@ -13,6 +13,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import Connection.Connector;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Gustav
@@ -42,13 +43,13 @@ import java.awt.event.ActionListener;
     
     public JButton bback = new JButton("back");
     
-     public EditMedRec(){
+     public EditMedRec(String ID){
         setTitle("Update Patient");
         setSize(300,230);
         setLayout(null);
         add(ltitle);
-        add(lID);
-        add(fID);
+//        add(lID);
+//        add(fID);
         add(lname);
         add(fname);
         add(lage);
@@ -60,8 +61,8 @@ import java.awt.event.ActionListener;
         add(bback);
         
         ltitle.setBounds(15,5,200,20);
-        lID.setBounds(15,30,120,20);
-        fID.setBounds(55,30,200,20);
+//        lID.setBounds(15,30,120,20);
+//        fID.setBounds(55,30,200,20);
         
         lname.setBounds(15,50,120,20);
         fname.setBounds(55,50,200,20);
@@ -79,21 +80,39 @@ import java.awt.event.ActionListener;
         bupdate.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            
-               Connector.updateData(getfID(), getfname(), getfage(), getcalendar());
+         try{   
+               Connector.updateData(ID, getfname(), getfage(), getcalendar());
+               dispose();
+               ViewData view = new ViewData();
+        }catch (Exception ex) {
+            System.out.println("Update Failed : " + ex.getMessage());
+        JOptionPane.showMessageDialog(null, "Update Failed");}
          
         }
     });
         bdelete.addActionListener(new ActionListener() {
+        
         @Override
         public void actionPerformed(ActionEvent arg0) {
+           try{ 
             fname.setText(null);
             fage.setText(null);
             calendar.setDate(null);
-            
+           }catch (Exception ex) {
+               System.out.println("Delete Failed : " + ex.getMessage());
+                       JOptionPane.showMessageDialog(null, "Delete Failed");
+           }
         }
     });
-        
+        bback.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+        dispose();
+        Menu menu = new Menu();       
+         
+        }
+    });
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);  
         setLocationRelativeTo(null);
